@@ -7,10 +7,15 @@ export default function Footer() {
 
         {/* Logo */}
         <a href="#home" className="flex items-center gap-2.5 shrink-0">
-          <svg viewBox="0 0 36 36" fill="none" className="w-7 h-7">
-            <circle cx="18" cy="18" r="15" stroke="#0ea5e9" strokeWidth="1.2" opacity="0.35" />
-            <circle cx="18" cy="18" r="8.5" stroke="#0ea5e9" strokeWidth="1.2" opacity="0.55" />
-            <circle cx="18" cy="18" r="2.5" fill="#00d4ff" />
+          <svg viewBox="0 0 40 40" fill="none" className="w-8 h-8">
+            <circle cx="20" cy="20" r="17" stroke="#0ea5e9" strokeWidth="0.9" opacity="0.22" />
+            <circle cx="20" cy="20" r="11" stroke="#0ea5e9" strokeWidth="0.9" opacity="0.30" />
+            <circle cx="20" cy="20" r="1.4" fill="#00d4ff" opacity="0.7" />
+            <path d="M20 14 L7 22 L11 23 L20 17 Z"  fill="#e0294a" />
+            <path d="M20 14 L33 22 L29 23 L20 17 Z" fill="#c4203d" />
+            <path d="M18.5 14 L21.5 14 L21 26 L19 26 Z" fill="#e0294a" />
+            <circle cx="20" cy="12.5" r="2.2" fill="#e0294a" />
+            <path d="M20 11 L22.5 10 L20 12 Z" fill="#f87171" />
           </svg>
           <span className="text-white font-bold tracking-[0.18em] uppercase text-sm">Ciconia</span>
         </a>
