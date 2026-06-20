@@ -1,64 +1,19 @@
 "use client";
 import { useState, useEffect } from "react";
 
-/* ── Ciconia logo mark: stork bird in crimson + animated radar rings ── */
+/* ── Ciconia logo mark: animated radar only ── */
 function CiconiaLogo() {
   return (
-    <div className="relative w-9 h-9 shrink-0">
-      <svg
-        viewBox="0 0 40 40"
-        fill="none"
-        className="absolute inset-0 w-full h-full"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* Radar rings — pulsing behind the bird */}
-        <circle cx="20" cy="20" r="17" stroke="#0ea5e9" strokeWidth="0.9" opacity="0.22" />
-        <circle cx="20" cy="20" r="11" stroke="#0ea5e9" strokeWidth="0.9" opacity="0.30" />
-
-        {/* Radar sweep line rotating around center */}
-        <line
-          x1="20" y1="20" x2="20" y2="3"
-          stroke="#0ea5e9"
-          strokeWidth="1"
-          opacity="0.55"
-          style={{
-            transformOrigin: "20px 20px",
-            animation: "radarSweep 4s linear infinite",
-          }}
-        />
-
-        {/* Center dot */}
-        <circle cx="20" cy="20" r="1.4" fill="#00d4ff" opacity="0.7" />
-
-        {/*
-          Stork / ciconia bird silhouette — angular, viewed from front.
-          Two swept wings meeting at body center, with a small head+beak peak.
-          Styled in crimson-red matching the real brand mark.
-        */}
-        {/* Left wing */}
-        <path
-          d="M20 14 L7 22 L11 23 L20 17 Z"
-          fill="#e0294a"
-        />
-        {/* Right wing */}
-        <path
-          d="M20 14 L33 22 L29 23 L20 17 Z"
-          fill="#c4203d"
-        />
-        {/* Body / neck */}
-        <path
-          d="M18.5 14 L21.5 14 L21 26 L19 26 Z"
-          fill="#e0294a"
-        />
-        {/* Head */}
-        <circle cx="20" cy="12.5" r="2.2" fill="#e0294a" />
-        {/* Beak */}
-        <path
-          d="M20 11 L22.5 10 L20 12 Z"
-          fill="#f87171"
-        />
-      </svg>
-    </div>
+    <svg viewBox="0 0 36 36" fill="none" className="w-9 h-9 shrink-0">
+      <circle cx="18" cy="18" r="15" stroke="#0ea5e9" strokeWidth="1.2" opacity="0.35" />
+      <circle cx="18" cy="18" r="9"  stroke="#0ea5e9" strokeWidth="1.2" opacity="0.55" />
+      <circle cx="18" cy="18" r="2.5" fill="#00d4ff" />
+      <line
+        x1="18" y1="18" x2="18" y2="3"
+        stroke="#0ea5e9" strokeWidth="1.4"
+        style={{ transformOrigin: "18px 18px", animation: "radarSweep 4s linear infinite" }}
+      />
+    </svg>
   );
 }
 
