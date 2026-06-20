@@ -67,7 +67,7 @@ const links = [
   { label: "About", href: "#about" },
   { label: "Vision", href: "#vision" },
   { label: "Product", href: "#product" },
-  { label: "Clients", href: "#clients" },
+  { label: "Our Team", href: "#clients" },
   { label: "Contact", href: "#contact" },
 ];
 

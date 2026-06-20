@@ -22,10 +22,10 @@ export default function Footer() {
 
         {/* Nav */}
         <nav className="flex flex-wrap justify-center gap-4 sm:gap-6">
-          {["Home", "About", "Vision", "Product", "Clients", "Contact"].map((label) => (
+          {["Home", "About", "Vision", "Product", "Our Team", "Contact"].map((label) => (
             <a
               key={label}
-              href={`#${label.toLowerCase()}`}
+              href={label === "Our Team" ? "#clients" : `#${label.toLowerCase()}`}
               className="text-slate-500 hover:text-slate-300 text-[11px] sm:text-xs uppercase tracking-widest transition-colors"
             >
               {label}
