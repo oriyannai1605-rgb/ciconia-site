@@ -6,111 +6,130 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-navy-950"
     >
-      {/* Animated background grid */}
+      {/* Grid background */}
       <div
-        className="absolute inset-0 opacity-10"
+        className="absolute inset-0 opacity-[0.07]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(14, 165, 233, 0.3) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(14, 165, 233, 0.3) 1px, transparent 1px)
+            linear-gradient(rgba(14,165,233,0.5) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(14,165,233,0.5) 1px, transparent 1px)
           `,
-          backgroundSize: "60px 60px",
+          backgroundSize: "50px 50px",
         }}
       />
 
-      {/* Radial gradient glow center */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,rgba(14,165,233,0.12),transparent)]" />
+      {/* Central glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_50%,rgba(14,165,233,0.11),transparent)]" />
 
-      {/* Radar rings */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-        {[180, 340, 500, 660].map((size, i) => (
-          <span
-            key={i}
-            className="absolute rounded-full border border-electric-500/20"
+      {/* Radar rings — sized responsively so they never overflow */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+        <div className="relative w-0 h-0">
+          {[160, 280, 400, 520].map((size, i) => (
+            <span
+              key={i}
+              className="absolute rounded-full border border-sky-500/15"
+              style={{
+                width: size,
+                height: size,
+                top: -size / 2,
+                left: -size / 2,
+              }}
+            />
+          ))}
+
+          {/* Sweep line */}
+          <div
             style={{
-              width: size,
-              height: size,
-              top: -size / 2,
-              left: -size / 2,
+              position: "absolute",
+              width: "1px",
+              height: "260px",
+              bottom: "0",
+              left: "0",
+              background: "linear-gradient(to top, rgba(14,165,233,0.65), transparent)",
+              transformOrigin: "50% 100%",
+              animation: "radarSweep 6s linear infinite",
             }}
           />
-        ))}
 
-        {/* Radar sweep line */}
-        <div
-          className="absolute w-px origin-bottom"
-          style={{
-            height: 330,
-            bottom: 0,
-            left: 0,
-            background: "linear-gradient(to top, rgba(14,165,233,0.7), transparent)",
-            animation: "radarSweep 6s linear infinite",
-            transformOrigin: "50% 100%",
-          }}
-        />
-        {/* Center dot */}
-        <div className="absolute w-3 h-3 rounded-full bg-accent -translate-x-1/2 -translate-y-1/2 shadow-[0_0_12px_4px_rgba(0,212,255,0.5)]" />
+          {/* Center dot */}
+          <div
+            className="absolute rounded-full bg-[#00d4ff]"
+            style={{
+              width: 10,
+              height: 10,
+              top: -5,
+              left: -5,
+              boxShadow: "0 0 14px 5px rgba(0,212,255,0.45)",
+            }}
+          />
+        </div>
       </div>
 
-      {/* Aircraft blip dots */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Aircraft blips */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {[
-          { top: "38%", left: "58%", delay: "0s" },
-          { top: "44%", left: "34%", delay: "1.5s" },
-          { top: "52%", left: "63%", delay: "3s" },
-        ].map((pos, i) => (
+          { top: "37%", left: "60%", delay: "0s", size: 7 },
+          { top: "45%", left: "33%", delay: "1.8s", size: 6 },
+          { top: "54%", left: "64%", delay: "3.2s", size: 5 },
+        ].map((b, i) => (
           <span
             key={i}
-            className="absolute w-2 h-2 rounded-full bg-electric-400"
+            className="absolute rounded-full bg-sky-400"
             style={{
-              top: pos.top,
-              left: pos.left,
-              animation: `pulse 2.5s ease-in-out infinite`,
-              animationDelay: pos.delay,
-              boxShadow: "0 0 8px 2px rgba(14,165,233,0.6)",
+              top: b.top,
+              left: b.left,
+              width: b.size,
+              height: b.size,
+              animation: "pulse 2.8s ease-in-out infinite",
+              animationDelay: b.delay,
+              boxShadow: "0 0 8px 3px rgba(14,165,233,0.55)",
             }}
           />
         ))}
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        {/* Eyebrow label */}
-        <div className="animate-fade-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-electric-500/40 bg-electric-500/10 mb-8">
-          <span className="w-1.5 h-1.5 rounded-full bg-electric-400 animate-pulse" />
-          <span className="text-electric-400 text-xs font-semibold tracking-widest uppercase">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-5 sm:px-8 text-center pt-24 pb-20">
+
+        {/* Eyebrow badge */}
+        <div className="animate-fade-up inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-sky-500/40 bg-sky-500/10 mb-7 sm:mb-8">
+          <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
+          <span className="text-sky-400 text-[10px] sm:text-xs font-semibold tracking-[0.15em] uppercase">
             Advanced Airspace Safety Technology
           </span>
         </div>
 
-        <h1 className="animate-fade-up delay-100 text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-tight tracking-tight mb-6">
+        {/* Headline */}
+        <h1 className="animate-fade-up delay-100 text-[2.4rem] leading-[1.12] sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-5 sm:mb-6">
           Pioneering Airborne
           <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-400 to-accent">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-[#00d4ff]">
             Collision Avoidance
           </span>
           <br />
           for Safer Skies
         </h1>
 
-        <p className="animate-fade-up delay-200 text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed mb-10">
+        {/* Sub */}
+        <p className="animate-fade-up delay-200 text-base sm:text-lg md:text-xl text-slate-300 max-w-xl sm:max-w-2xl mx-auto leading-relaxed mb-9 sm:mb-10">
           Field-proven systems delivering superb performance — fewer false alarms,
           optimized airspace utilization, and unparalleled worldwide success.
         </p>
 
-        <div className="animate-fade-up delay-300 flex flex-col sm:flex-row gap-4 justify-center">
+        {/* CTAs */}
+        <div className="animate-fade-up delay-300 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
           <a
             href="#product"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-electric-500 hover:bg-electric-400 text-white font-semibold text-base transition-all duration-200 hover:shadow-xl hover:shadow-electric-500/30 hover:-translate-y-0.5"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-sky-500 hover:bg-sky-400 text-white font-semibold text-sm sm:text-base transition-all duration-200 hover:shadow-xl hover:shadow-sky-500/30 hover:-translate-y-0.5 active:scale-95"
           >
             Explore the Technology
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/20 hover:border-electric-400/60 text-white font-semibold text-base transition-all duration-200 hover:bg-white/5 hover:-translate-y-0.5"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full border border-white/20 hover:border-sky-400/50 text-white font-semibold text-sm sm:text-base transition-all duration-200 hover:bg-white/5 hover:-translate-y-0.5 active:scale-95"
           >
             Get in Touch
           </a>
@@ -118,9 +137,9 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-        <span className="text-slate-500 text-xs tracking-widest uppercase">Scroll</span>
-        <svg className="w-4 h-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-50">
+        <span className="text-slate-400 text-[10px] tracking-widest uppercase">Scroll</span>
+        <svg className="w-4 h-4 text-slate-400 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
       </div>
